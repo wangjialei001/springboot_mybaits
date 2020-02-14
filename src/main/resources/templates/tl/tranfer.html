@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/jquery-3.4.1.js"></script>
+    <script>
+        $(function() {
+            $("#btnSubmit").click(function () {
+                $.ajax({
+                    method:"post",
+                    url: "/user/tranferMoney",
+                    contentType: "application/json;charset=utf-8",
+                    data:JSON.stringify({
+                        "source": $("[name='source']").val(),
+                        "target": $("[name='target']").val(),
+                        "money": $("[name='money']").val()
+                    }),
+                    dataType:"json",
+                    success: function (data, status) {
+                        console.log(data)
+                        if (data.code == 200) {
+                            window.location.href = "/user/userList"
+                        }
+                    }
+                });
+
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+    <input type="text" name="source"><br>
+    <input type="text" name="target"><br>
+    <input type="text" name="money"><br>
+    <input type="button" id="btnSubmit" value="提交">
+</body>
+</html>
