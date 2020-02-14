@@ -49,6 +49,12 @@ public class UserController {
 
     @Autowired
     private TaskAsync taskAsync;
+
+    /**
+     * 异步方法
+     * @return
+     * @throws Exception
+     */
     @GetMapping("/async_test")
     @ResponseBody
     public String async_Test() throws Exception {
